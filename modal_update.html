@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  .btn_verify{
+    border-radius: 20px;    
+    height;:45px;
+  }
+  .font_size{
+    font-size: 15px;
+  }
+</style>
+
+    <title>Form Validation With REGEX</title>
+</head>
+
+<body>
+<br/>
+<br/>
+<div class="container">
+<button class="btn btn-success" data-target="#myModal" data-toggle="modal"> Open SignUp </button>
+    <div class="modal fade" id="myModal" tabindex="-1" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">  
+            <div class="modal-content">
+
+                <div class="modal-header model-title">
+                   <div class="row">
+                      <div class="col-12"><h3 class="text-default  w-100 text-center"> Reset Registration </h3></div>
+                      <div class="col-12"><h5 class="text-default modal-title w-100 text-center font font_size"> ( رجسٹریشن کو دوبارہ ترتیب دیں ) </h5></div>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body" bg-dark>
+
+
+                    <!-- <div class="container-sm p-5 m-1 bg-dark text-white rounded "> -->
+                        <form method="post" action="#" onsubmit="return Validation()">  
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">Phone No ( فون نمبر )</label><br />
+                                <input type="text" id="Cellno" name="" class="form-control shadow-none border-bottom" style="border:hidden" placeholder="Enter Phone No ( فون نمبر درج کریں )">
+                                <span id="cellNoError" class="text-danger font-weight-bold"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">CNIC</label><br />
+                                <input type="text" id="cnic" name="" class="form-control shadow-none border-bottom" style="border:hidden"  placeholder="Enter CNIC ( درج کریں CNIC )">
+                                <span id="cnicError" class="text-danger font-weight-bold"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">NTN</label><br />
+                                <input type="text" id="ntn" name="" class="form-control shadow-none border-bottom" style="border:hidden" placeholder="Enter NTN ( درج کریں NTN )" >
+                                <span id="ntnError" class="text-danger font-weight-bold"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">Code ( کوڈ )</label><br />
+                                <input type="text" id="code" name="" class="form-control shadow-none border-bottom" style="border:hidden"  placeholder="Enter Code ( کوڈ درج کریں )">
+                                <span id="codeError" class="text-danger font-weight-bold"></span>
+                            </div>
+
+
+				
+
+                            <!-- <div class="form-group">
+                              <label>Username:</label><br />
+                                <input type="text" id="username" name="" class="form-control shadow-none border-bottom" style="border:hidden">
+                                <span id="usernameError" class="text-danger font-weight-bold"></span>
+                            </div> -->
+                
+                            <div class="form-group">
+                                <label class="font-weight-bold">   Password (  پاس ورڈ )</label><br />
+                                <input type="password" id="Password" name="" class="form-control shadow-none border-bottom " style="border:hidden"  placeholder="Enter Password ( پاس ورڈ درج کریں )">
+                                <span id="passwordError" class="text-danger "></span>
+                            </div>
+<!--                 
+                            <div class="form-group">
+                                <label>Confirm Password:</label><br />
+                                <input type="text" id="ConfirmPassword" name="" class="form-control shadow-none border-bottom" style="border:hidden">
+                                <span id="confirmPasswordError" class="text-danger font-weight-bold"></span>
+                            </div> -->
+                
+                            <!-- <div class="form-group">
+                                <label>Email:</label><br />
+                                <input type="text" id="Email" name="" class="form-control shadow-none border-bottom" style="border:hidden">
+                                <span id="emailError" class="text-danger font-weight-bold"></span>
+                            </div>
+                 -->
+                            <br />
+
+                            <div class="row">
+                                <div class="col text-center">
+                                  <button class="btn btn-warning btn-lg font-weight-bold btn_verify" >Verify ( تصدیق کریں )</button>
+                                </div>
+                              </div>
+
+                            <!-- <div class="row d-flex justify-content-center align-content-center">
+                                <div class="col-12"> <button  class="btn btn-warning btn-lg font-weight-bold " name="">Verify ( تصدیق کریں )</button></div>
+                            </div> -->
+                            <!-- <div class="d-flex justify-content-center">
+                               
+                            </div> -->
+                            
+
+                            <!-- <input type="submit" name="btn_verify" value="Verify ( تصدیق کریں )" id="btn_verify" class="text-default text-center font-weight-bold"> -->
+                
+                        </form>
+                    <!-- </div> -->
+
+                
+                
+                    <script type="text/javascript">
+                        function Validation() {
+                            var username = document.getElementById('username').value;
+                            var Password = document.getElementById('Password').value;
+                            var ConfirmPassword = document.getElementById('ConfirmPassword').value;
+                            var Email = document.getElementById('Email').value;
+			                var cnic = document.getElementById('cnic').value;
+                            var Cellno = document.getElementById('Cellno').value;
+                            var ntn = document.getElementById('ntn').value;
+                
+                            var userCheck = /^[A-Za-z. ]{3,20}$/;
+                            var passwordCheck = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+                            // /^([?=.*[0-9])(?=.*[!@#$%^*&-_~])[A-Za-z0-9!@#$%^*&-_~]{8,16}$/;
+                            var emailCheck = /^[A-Za-z_.]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+                            var cellnoCheck = /^((\+92)?(0092)?(92)?(0)?)(3)([0-9]{9})$/gm;
+                            var ntnCheck = /^[0-9]{7}-[0-9]$/;
+			                var cnicCheck = /^[0-9]{5}-[0-9]{7}-[0-9]$/;
+
+
+                            
+			 if (ntnCheck.test(ntn)) {
+                                document.getElementById('ntnError').innerHTML = " ";
+                            }
+                            else {
+                                document.getElementById('ntnError').innerHTML = " ** NTN number is invalid";
+                                return false;
+                	
+                            }
+
+
+			
+			 if (cnicCheck.test(cnic)) {
+                                document.getElementById('cnicError').innerHTML = " ";
+                            }
+                            else {
+                                document.getElementById('cnicError').innerHTML = " ** CNIC number is invalid";
+                                return false;
+                	
+                            }
+                            if (userCheck.test(username)) {
+                                document.getElementById('usernameError').innerHTML = " ";
+                            }
+                            else {
+                                document.getElementById('usernameError').innerHTML = " ** Username is invalid";
+                                return false;
+                
+                            }
+                
+                            if (passwordCheck.test(Password)) {
+                                document.getElementById('passwordError').innerHTML = " ";
+                            }
+                            else {
+                                document.getElementById('passwordError').innerHTML = "** Password is invalid";
+                                return false;
+                            }
+                
+                            if (ConfirmPassword.match(Password)) {
+                                document.getElementById('confirmPasswordError').innerHTML = " ";
+                            }
+                            else {
+                                document.getElementById('confirmPasswordError').innerHTML = "Password doesn't matching";
+                                return false;
+                            }
+                            if (emailCheck.test(Email)) {
+                                document.getElementById('emailError').innerHTML = " ";
+                            }
+                            else {
+                                document.getElementById('emailError').innerHTML = "** Email is invalid";
+                                return false;
+                            }
+                            if (cellnoCheck.test(Cellno)) {
+                                document.getElementById('cellNoError').innerHTML = " ";
+                            }
+                            else {
+                                document.getElementById('cellNoError').innerHTML = "** Cell number is invalid";
+                                return false;
+                            }
+                
+                        }
+                
+                
+                    </script>
+                
+
+
+                </div>
+
+                    <!-- <div class="modal-footer justify-content-center">
+                        <button class="btn btn-danger" data-dismiss="modal">Signup </button>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+    </html>
